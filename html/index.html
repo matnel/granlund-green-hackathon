@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="jquery.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic|Droid+Serif|Francois+One' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+
+	function getUrlVars() {
+	    var vars = {};
+	    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+	        vars[key] = value;
+	    });
+	    return vars;
+	}
+
+
+
+//	alert(status+","+time);
+
+setTimeout(function(){
+   		window.location.reload(1);
+	}, 5000);
+
+	$( document ).ready(function() {
+
+    	//console.log( "ready!" );
+    	$( '#output' ).removeClass( 'bad' );
+    	$( '#output' ).removeClass( 'good' );
+
+	    var status = getUrlVars()["status"]; //0 on - 1 sleeping
+		var time = getUrlVars()["time"];
+
+		time=Math.floor(time/60);
+
+		var co2=time*3;
+
+		if (status==0){
+			$('#output').html('You have left your monitor open for '+time+' minutes and wasted '+co2 +' Co2!!!!');
+			$('#output').addClass( 'bad' );
+		}
+		else {
+			$('#output').html('You have been great by putting your monitor asleep for '+time+' minutes');
+			$('#output').addClass( 'good' );
+		}
+
+		social();
+
+	});
+
+	function social(){
+
+		var randomNumber = Math.floor(Math.random() * 100);
+
+		var randomStatus=Math.floor(Math.random() * 2);
+
+		var users = ["Matti", "Sanja", "Andrea", "Maja", "Mikko", "Pirkko", "Marko", "Giulio","Minna"];
+
+		var randomUser = Math.floor(Math.random() * (7 - 0));
+
+		if (randomStatus==0){
+			var msg="has saved "+randomNumber+" Co2";
+			$('#social').addClass( 'goodMsg' );
+			$('#car').hide();
+			$('#tree').show();
+		}
+		else {
+
+			randomNumber+=10;
+			var msg="has wasted "+randomNumber+" Co2";
+			$('#social').addClass( 'badMsg' );
+			$('#tree').hide();
+			$('#car').show();
+		}
+
+		$('#socialMsg').html(users[randomUser]+" "+msg);
+
+	}
+
+
+
+</script>
+
+</head>
+
+<body>
+
+<h1>Granlund Hackaton</h1>
+<p id="output"></p>
+
+<div id="social">
+<p id="socialMsg"></p>
+<img id="tree" src="tree.png" />
+<img id="car" src="car.png" />
+
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+h1, h2 {
+font-family: 'Playfair Display', serif;
+
+}
+
+p {
+
+	font-family: 'Francois One', sans-serif;
+}
+
+.bad {
+
+	color: red;
+
+}
+
+.good {
+
+	color:green;
+}
+
+
+#social {
+
+	height: 4rem;
+	line-height: 4rem;
+	padding-left: 0.5rem;
+	color: white;
+	width: 20rem;
+
+}
+
+
+
+.goodMsg {
+
+	background: green;
+
+}
+
+.badMsg{
+
+	background: red;
+}
